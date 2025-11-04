@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sahyog - Building Communities Through Mutual Support</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing-page" class="page active">
+        <nav class="landing-nav">
+            <div class="container">
+                <div class="nav-content">
+                    <div class="logo">
+                        <span class="logo-icon">🤝</span>
+                        <span class="logo-text">Sahyog</span>
+                    </div>
+                    <button class="btn btn--primary" onclick="app.showPage('auth-page')">Get Started</button>
+                </div>
+            </div>
+        </nav>
+
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">Building Communities Through Mutual Support</h1>
+                <p class="hero-subtitle">Connect with neighbors, share skills, and create a culture of helping each other</p>
+                <div class="hero-buttons">
+                    <button class="btn btn--primary btn--lg" onclick="app.showPage('auth-page')">Get Started</button>
+                    <button class="btn btn--secondary btn--lg" onclick="document.getElementById('how-it-works').scrollIntoView({behavior: 'smooth'})">Learn More</button>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">1,234</div>
+                        <div class="stat-label">Helpers</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">567</div>
+                        <div class="stat-label">Tasks Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">890</div>
+                        <div class="stat-label">Help Credits Earned</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="features-section">
+            <div class="container">
+                <h2 class="section-title">How Sahyog Works</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Skill-Based Matching</h3>
+                        <p>Get connected with helpers who have the exact skills you need, from tech support to tutoring</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h3>Help Credit System</h3>
+                        <p>Earn credits by helping others, use them when you need assistance. Fair and balanced!</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⭐</div>
+                        <h3>Community Trust</h3>
+                        <p>Rate and review each interaction to build a trustworthy community network</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📍</div>
+                        <h3>Location-Based</h3>
+                        <p>Find help nearby and build meaningful connections in your local community</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Auth Page -->
+    <div id="auth-page" class="page">
+        <div class="auth-container">
+            <div class="auth-card">
+                <div class="auth-header">
+                    <div class="logo">
+                        <span class="logo-icon">🤝</span>
+                        <span class="logo-text">Sahyog</span>
+                    </div>
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" data-tab="signup" onclick="app.switchAuthTab('signup')">Sign Up</button>
+                        <button class="auth-tab" data-tab="login" onclick="app.switchAuthTab('login')">Login</button>
+                    </div>
+                </div>
+
+                <!-- Sign Up Form -->
+                <form id="signup-form" class="auth-form active">
+                    <div class="form-group">
+                        <label class="form-label">Full Name *</label>
+                        <input type="text" class="form-control" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email *</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password *</label>
+                        <input type="password" class="form-control" name="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Location/City *</label>
+                        <input type="text" class="form-control" name="location" placeholder="e.g., Mumbai, Maharashtra" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Profile Photo URL (optional)</label>
+                        <input type="url" class="form-control" name="profilePhoto" placeholder="https://">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Your Skills *</label>
+                        <div id="skills-selector" class="skills-grid"></div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Bio (optional)</label>
+                        <textarea class="form-control" name="bio" rows="3" placeholder="Tell us about yourself..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">Create Account</button>
+                    <p class="auth-footer">Already have an account? <a href="#" onclick="app.switchAuthTab('login'); return false;">Login</a></p>
+                </form>
+
+                <!-- Login Form -->
+                <form id="login-form" class="auth-form">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn--primary btn--full-width">Login</button>
+                    <p class="auth-footer">Don't have an account? <a href="#" onclick="app.switchAuthTab('signup'); return false;">Sign Up</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main App (Dashboard) -->
+    <div id="main-app" class="page">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo">
+                    <span class="logo-icon">🤝</span>
+                    <span class="logo-text">Sahyog</span>
+                </div>
+                <nav class="main-nav">
+                    <a href="#" class="nav-link active" data-view="dashboard" onclick="app.switchView('dashboard')">Dashboard</a>
+                    <a href="#" class="nav-link" data-view="browse" onclick="app.switchView('browse')">Browse Requests</a>
+                    <a href="#" class="nav-link" data-view="my-requests" onclick="app.switchView('my-requests')">My Requests</a>
+                    <a href="#" class="nav-link" data-view="leaderboard" onclick="app.switchView('leaderboard')">Leaderboard</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="icon-btn" onclick="app.toggleNotifications()">
+                        <span class="notification-icon">🔔</span>
+                        <span class="notification-badge" id="notification-badge">0</span>
+                    </button>
+                    <div class="user-menu" onclick="app.toggleUserMenu()">
+                        <img id="header-avatar" src="" alt="User" class="user-avatar">
+                        <div class="user-dropdown" id="user-dropdown">
+                            <a href="#" onclick="app.viewProfile(app.currentUser.id); return false;">👤 View Profile</a>
+                            <a href="#" onclick="app.logout(); return false;">🚪 Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Notifications Panel -->
+        <div id="notifications-panel" class="notifications-panel">
+            <div class="notifications-header">
+                <h3>Notifications</h3>
+                <button class="btn btn--sm" onclick="app.markAllNotificationsRead()">Mark all as read</button>
+            </div>
+            <div id="notifications-list" class="notifications-list"></div>
+        </div>
+
+        <div class="app-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="user-profile-card">
+                    <img id="sidebar-avatar" src="" alt="Profile" class="profile-avatar">
+                    <h3 id="sidebar-name"></h3>
+                    <div class="credits-display">
+                        <span class="credits-icon">💰</span>
+                        <span class="credits-amount" id="sidebar-credits">0</span>
+                        <span class="credits-label">Help Credits</span>
+                    </div>
+                    <p class="location" id="sidebar-location"></p>
+                    <div class="quick-stats">
+                        <div class="quick-stat">
+                            <div class="stat-value" id="sidebar-tasks">0</div>
+                            <div class="stat-name">Tasks</div>
+                        </div>
+                        <div class="quick-stat">
+                            <div class="stat-value" id="sidebar-hours">0</div>
+                            <div class="stat-name">Hours</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="quick-actions">
+                    <button class="btn btn--primary btn--full-width" onclick="app.switchView('post-request')">📝 Post New Request</button>
+                    <button class="btn btn--secondary btn--full-width" onclick="app.switchView('browse')">🔍 Browse &amp; Help</button>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="main-content">
+                <!-- Dashboard View -->
+                <div id="dashboard-view" class="view active">
+                    <h1 class="page-title">Dashboard</h1>
+                    
+                    <section class="dashboard-section">
+                        <h2 class="section-heading">Requests Matching Your Skills</h2>
+                        <div id="matched-requests" class="requests-grid"></div>
+                    </section>
+
+                    <section class="dashboard-section">
+                        <h2 class="section-heading">Your Active Tasks</h2>
+                        <div id="active-tasks" class="tasks-list"></div>
+                    </section>
+
+                    <section class="dashboard-section">
+                        <h2 class="section-heading">Recent Activity</h2>
+                        <div id="activity-feed" class="activity-feed"></div>
+                    </section>
+                </div>
+
+                <!-- Browse Requests View -->
+                <div id="browse-view" class="view">
+                    <h1 class="page-title">Browse Help Requests</h1>
+                    <div class="browse-layout">
+                        <aside class="filters-sidebar">
+                            <h3>Filters</h3>
+                            <div class="filter-group">
+                                <label class="form-label">Search</label>
+                                <input type="text" class="form-control" id="search-input" placeholder="Search requests...">
+                            </div>
+                            <div class="filter-group">
+                                <label class="form-label">Skills</label>
+                                <div id="skill-filters"></div>
+                            </div>
+                            <div class="filter-group">
+                                <label class="form-label">Urgency</label>
+                                <div class="checkbox-group">
+                                    <label><input type="checkbox" value="High" class="urgency-filter"> High</label>
+                                    <label><input type="checkbox" value="Medium" class="urgency-filter"> Medium</label>
+                                    <label><input type="checkbox" value="Low" class="urgency-filter"> Low</label>
+                                </div>
+                            </div>
+                            <button class="btn btn--secondary btn--full-width" onclick="app.resetFilters()">Reset Filters</button>
+                        </aside>
+                        <div class="browse-content">
+                            <div class="browse-header">
+                                <div class="sort-controls">
+                                    <label>Sort by:</label>
+                                    <select id="sort-select" class="form-control" onchange="app.applyFilters()">
+                                        <option value="recent">Most Recent</option>
+                                        <option value="nearest">Nearest</option>
+                                        <option value="credits">Highest Credits</option>
+                                        <option value="urgent">Most Urgent</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="browse-requests" class="requests-grid"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Post Request View -->
+                <div id="post-request-view" class="view">
+                    <h1 class="page-title">Post a Help Request</h1>
+                    <div class="form-container">
+                        <form id="post-request-form" class="request-form">
+                            <div class="form-group">
+                                <label class="form-label">Title *</label>
+                                <input type="text" class="form-control" name="title" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Detailed Description *</label>
+                                <textarea class="form-control" name="description" rows="4" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Skills Needed *</label>
+                                <div id="request-skills-selector" class="skills-grid"></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Location</label>
+                                    <input type="text" class="form-control" name="location" id="request-location">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Urgency *</label>
+                                    <select class="form-control" name="urgency" required>
+                                        <option value="Low">Low</option>
+                                        <option value="Medium" selected>Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label class="form-label">Preferred Date &amp; Time</label>
+                                    <input type="text" class="form-control" name="preferredDateTime" placeholder="e.g., Tomorrow 4:00 PM">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Duration (hours)</label>
+                                    <input type="number" class="form-control" name="duration" min="1" value="1">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Credits to Offer *</label>
+                                <input type="number" class="form-control" name="creditsOffered" min="1" value="2" required>
+                                <small>Your current balance: <span id="credits-balance">0</span> credits</small>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Additional Notes</label>
+                                <textarea class="form-control" name="notes" rows="2"></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn--primary">Post Request</button>
+                                <button type="button" class="btn btn--secondary" onclick="app.switchView('dashboard')">Cancel</button>
+                            </div>
+                            <p class="form-note">💡 You'll be notified when someone accepts your request</p>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- My Requests View -->
+                <div id="my-requests-view" class="view">
+                    <h1 class="page-title">My Requests</h1>
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="posted" onclick="app.switchMyRequestsTab('posted')">Requests I Posted</button>
+                        <button class="tab-btn" data-tab="helping" onclick="app.switchMyRequestsTab('helping')">Tasks I'm Helping With</button>
+                    </div>
+                    <div id="my-posted-requests" class="tab-content active"></div>
+                    <div id="my-helping-tasks" class="tab-content"></div>
+                </div>
+
+                <!-- Leaderboard View -->
+                <div id="leaderboard-view" class="view">
+                    <h1 class="page-title">Community Leaderboard</h1>
+                    <div class="tabs">
+                        <button class="tab-btn active" data-tab="week" onclick="app.switchLeaderboardTab('week')">This Week</button>
+                        <button class="tab-btn" data-tab="alltime" onclick="app.switchLeaderboardTab('alltime')">All Time</button>
+                    </div>
+                    <div id="leaderboard-content" class="leaderboard-content"></div>
+                </div>
+
+                <!-- Profile View -->
+                <div id="profile-view" class="view">
+                    <div id="profile-content"></div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Request Detail Modal -->
+    <div id="request-modal" class="modal">
+        <div class="modal-content modal-lg">
+            <div class="modal-header">
+                <h2 id="modal-request-title"></h2>
+                <button class="modal-close" onclick="app.closeModal('request-modal')">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-request-body"></div>
+        </div>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div id="feedback-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Submit Feedback</h2>
+                <button class="modal-close" onclick="app.closeModal('feedback-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="feedback-form">
+                    <input type="hidden" id="feedback-task-id">
+                    <div class="form-group">
+                        <label class="form-label">Rate Your Experience</label>
+                        <div class="star-rating" id="star-rating">
+                            <span class="star" data-rating="1">☆</span>
+                            <span class="star" data-rating="2">☆</span>
+                            <span class="star" data-rating="3">☆</span>
+                            <span class="star" data-rating="4">☆</span>
+                            <span class="star" data-rating="5">☆</span>
+                        </div>
+                        <input type="hidden" id="rating-value" value="0">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Comment</label>
+                        <textarea class="form-control" id="feedback-comment" rows="4" placeholder="Share your experience..."></textarea>
+                    </div>
+                    <div class="feedback-tags">
+                        <button type="button" class="tag-btn" onclick="app.addFeedbackTag(this, 'Was helpful')">Was helpful</button>
+                        <button type="button" class="tag-btn" onclick="app.addFeedbackTag(this, 'On time')">On time</button>
+                        <button type="button" class="tag-btn" onclick="app.addFeedbackTag(this, 'Great communication')">Great communication</button>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn--primary">Submit Feedback</button>
+                        <button type="button" class="btn btn--secondary" onclick="app.closeModal('feedback-modal')">Skip for now</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Achievement Unlock Modal -->
+    <div id="achievement-modal" class="modal">
+        <div class="modal-content modal-achievement">
+            <div class="modal-body">
+                <div class="achievement-unlock">
+                    <div class="achievement-icon" id="achievement-icon">🏆</div>
+                    <h2>Achievement Unlocked!</h2>
+                    <h3 id="achievement-name"></h3>
+                    <p id="achievement-description"></p>
+                    <button class="btn btn--primary" onclick="app.closeModal('achievement-modal')">Awesome!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
